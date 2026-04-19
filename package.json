@@ -21,8 +21,9 @@
     "vite": "^5.0.8"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/use-dev-html.mjs && vite",
+    "prebuild": "node scripts/use-dev-html.mjs",
+    "build": "vite build && node scripts/publish-root.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs"
