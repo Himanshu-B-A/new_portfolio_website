@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Netflix Jobs–style design tokens (colors only; Netflix Sans is proprietary — we use Outfit + Inter) */
+:root {
+  --white: #fff;
+  --black: #000;
+  --neutral-white: #f7f5f5;
+  --red: #e50914;
+  --dark-red: #080202;
+  --bright-red: #fceeee;
+  --orange: #d23c01;
+  --dark-orange: #080402;
+  --bright-orange: #fcf4ee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  font-size: clamp(14px, 2.5vw, 19.2px);
+  line-height: 1.56;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: clamp(14px, 1.5625vw, 19.2px);
+  }
+}
+
+body {
+  background-color: #000;
+  color: var(--neutral-white);
+  font-family: Inter, system-ui, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.56;
+}
+
+/* Subtle scrollbar — avoids a loud red bar along the viewport edge */
+@supports (scrollbar-width: thin) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(80, 80, 80, 0.9) #0a0a0a;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4a4a4a, #2d2d2d);
+  border-radius: 6px;
+  border: 1px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5c5c5c, #3a3a3a);
+}
+
+/* Primary actions — careers red (Netflix Jobs–style CTA: uppercase, wide tracking) */
+@layer components {
+  .btn-cta {
+    @apply inline-flex items-center justify-center bg-[#e50914] px-10 py-4 text-center text-xs font-bold uppercase tracking-[0.22em] text-white
+      transition-colors duration-200 hover:bg-[#f40612] active:bg-[#c10812];
+  }
+
+  .btn-primary {
+    @apply bg-[#e50914] text-white px-8 py-3.5 rounded-lg font-semibold text-center
+      transition-all duration-300 hover:bg-red-700 hover:scale-105
+      active:scale-95 shadow-lg hover:shadow-2xl hover:shadow-red-600/30;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-800 text-white px-8 py-3.5 rounded-lg font-semibold text-center
+      transition-all duration-300 hover:bg-gray-700 border-2 border-gray-600
+      hover:border-gray-500 hover:scale-105 active:scale-95;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4 text-white tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-neutral-400 md:text-xl;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-red-600/20;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #b3b3b3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: linear-gradient(135deg, #ffffff 0%, var(--bright-red) 40%, var(--red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 2, 2, 0) 0%,
+    rgba(8, 2, 2, 0.92) 100%
+  );
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 20px 40px rgba(229, 9, 20, 0.22);
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::selection {
+  background-color: var(--red);
+  color: white;
+}
