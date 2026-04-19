@@ -6,7 +6,9 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: './',
+  // Output to /docs so GitHub Pages can use: Settings → Pages → Branch "main" → Folder "/docs"
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
+    emptyOutDir: true,
   },
 });
